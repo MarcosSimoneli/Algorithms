@@ -21,3 +21,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           base: develop
+
+  dummy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy step
+        run: echo "This is a dummy job."
