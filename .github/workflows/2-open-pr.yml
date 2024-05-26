@@ -1,7 +1,7 @@
 name: Create PR to Main
 
 on:
-  workflow_run:
+  workflow_run: 
     workflows: [".NET Core Desktop"] # Substitua pelo nome do primeiro workflow
     types:
       - completed
