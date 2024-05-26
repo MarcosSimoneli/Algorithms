@@ -1,32 +1,25 @@
-name: Create PR to Main
-
+name: "Create PR"
 on:
+  push:
+    branches:
+      - feature/*
   workflow_run:
     workflows: [".NET Core Desktop"]
     types:
       - completed
 
 jobs:
-  build:
+  create-pr-on-push:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-  create_pr_to_main:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+      - uses: actions/checkout@v2
         with:
-          title: "Automatically created PR to main"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          fetch-depth: 0
+          ref: develop
+      - name: Create Pull Request
+        uses: thomaseizinger/create-pull-request@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          head: ${{ github.ref }}
           base: develop
-
-  dummy_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dummy step
-        run: echo "This is a dummy job."
+          title: "An automatically created PR!"
