@@ -39,18 +39,6 @@ The time complexity of Simple Search is `O(n)`, where `n` is the number of eleme
 - **Worst Case**: `O(n)` - The target element is in the last position or not in the list.
 - **Average Case**: `O(n/2)` - On average, the target element will be found in the middle of the list, but in Big(O) notation, constants are ignored, so it is still `O(n)`.
 
-### 4. Comparison with Other Search Algorithms
-
-#### Binary Search
-- **Requirements**: Ordered list.
-- **Complexity**: `O(log n)`.
-- **Advantage**: Much more efficient for large lists compared to Simple Search.
-
-#### Hash Table Search
-- **Requirements**: Hash data structure.
-- **Complexity**: `O(1)` for search.
-- **Advantage**: Extremely efficient, but requires additional space and an appropriate hash function.
-
 #### Final Considerations
 While Simple Search is simple and straightforward, algorithms like binary search and hash table search offer superior efficiencies but with additional requirements and complexities.
 
