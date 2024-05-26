@@ -1,0 +1,25 @@
+name: Create PR for the master
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  create-pr-master:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # This guarantees the complete clone with all branches
+
+      - name: Create PR for the Master
+        run: |
+          if [ "${{ github.event.pull_request.base.ref }}" == "develop" ]; then
+            git pull origin develop
+            gh pr create --base master --head develop --title "Merge from develop to master" --body "Automatically generated PR by GitHub Actions."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
