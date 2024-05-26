@@ -1,10 +1,7 @@
 name: "Create PR"
-on:
+on: 
   push:
-    branches:
-      - feature/*
-  workflow_run:
-    workflows: [".NET Core Desktop"]
+    branches: [ "feature/*" ]
     types:
       - completed
 
@@ -12,14 +9,12 @@ jobs:
   create-pr-on-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: develop
-      - name: Create Pull Request
-        uses: thomaseizinger/create-pull-request@master
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          head: ${{ github.ref }}
-          base: develop
-          title: "An automatically created PR!"
+    - uses: actions/checkout@1.0.0
+    
+    - name: Create pull request
+      uses: thomaseizinger/create-pull-request@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        head: ${{ github.ref }}
+        base: develop
+        title: "An automatically created PR!"

@@ -4,18 +4,22 @@ on:
   push:
     branches: [ "feature/*" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
+
   build:
+
     strategy:
       matrix:
         configuration: [Debug]
 
-    runs-on: windows-latest
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
-      Solution_Name: Algorithms.sln  # Substitua pelo nome da sua solução
+      Solution_Name:     Algorithms.sln                  # Replace with your solution name, i.e. MyWpfApp.sln.
+      #Test_Project_Path:                   # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
 
     steps:
     - name: Checkout
@@ -23,16 +27,16 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Instalar o .NET Core
+    # Install the .NET Core workload
     - name: Install .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
 
-    # Adicionar MSBuild ao PATH
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
 
-    # Construir a solução
-    - name: Build solution
-      run: dotnet build ${{ env.Solution_Name }} --configuration ${{ matrix.configuration }}
+    # Execute all unit tests in the solution
+    - name: Execute unit tests
+      run: dotnet test
