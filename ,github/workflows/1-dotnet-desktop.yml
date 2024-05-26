@@ -21,6 +21,7 @@ jobs:
       Solution_Name: Algorithms.sln                       # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
 
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
