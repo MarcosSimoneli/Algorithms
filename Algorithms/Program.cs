@@ -21,7 +21,7 @@ public class Program
 
         //var found = BinarySearch.BinarySearchMethod(array, number);
 
-        //Console.WriteLine($"The number was found? {found}!";
+        //Console.WriteLine($"The number was found? {found}!");
         #endregion
     }
 }
