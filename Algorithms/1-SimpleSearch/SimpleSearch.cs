@@ -1,4 +1,4 @@
-namespace Algorithms
+namespace Algorithms._1_SimpleSearch
 {
     public class SimpleSearch
     {

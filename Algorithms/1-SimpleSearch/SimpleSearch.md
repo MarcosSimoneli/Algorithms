@@ -1,5 +1,3 @@
-### 1. Introduction
-
 #### What is a Simple Search?
 A Simple Search, or linear search, is an algorithm that sequentially checks each element of a list until it finds the desired element or has checked all elements.
 
